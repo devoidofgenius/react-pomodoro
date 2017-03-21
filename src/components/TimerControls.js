@@ -5,7 +5,7 @@ class TimerControls extends React.Component {
   render() {
     return (
       <div className="timerControls">
-        <button>Play</button>
+        <button onClick={this.props.startTimer}>Play</button>
         <button>Pause</button>
       </div>
     );
