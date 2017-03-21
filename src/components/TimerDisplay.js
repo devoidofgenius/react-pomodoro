@@ -3,6 +3,7 @@ import '../css/TimerDisplay.css';
 
 class TimerDisplay extends React.Component {
 
+// Convert time from seconds (1500) to readable format (25:00)
   convertTime(time) {
     let mins = Math.floor(time / 60);
     let secs = time - mins * 60;

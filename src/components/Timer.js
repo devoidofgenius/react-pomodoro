@@ -18,6 +18,7 @@ class Timer extends React.Component {
     this.decrementTime = this.decrementTime.bind(this);
   }
 
+// Sets new time state based on values passed into function 
   setNewTime(newTime) {
     // Need to reset Timer;
 
@@ -27,6 +28,7 @@ class Timer extends React.Component {
     });
   }
 
+// Sets isPlaying state value to true and fires decrementTime function inside setInterval on placeholder timer state
   startTimer() {
     this.setState({
       timer: setInterval(this.decrementTime, 1000),
@@ -34,6 +36,7 @@ class Timer extends React.Component {
     });
   }
 
+// Decrements the time state value by one
   decrementTime() {
     this.setState({
       time: this.state.time - 1

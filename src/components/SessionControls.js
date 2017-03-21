@@ -7,6 +7,7 @@ class SessionControls extends React.Component {
     this.clickHandler = this.clickHandler.bind(this);
   }
 
+// Handles click and grabs value from target
   clickHandler(event) {
     const newTime = Number(event.target.value);
     this.props.setNewTime(newTime);
