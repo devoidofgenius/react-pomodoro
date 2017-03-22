@@ -4,9 +4,9 @@
   justify-content: center;
   margin: 0 0 20px 0;
   .play {
-    background: rgba(#d9e1e8, 0.5);
-    height: 45px;
-    width: 45px;
+    background: #DFE3E6;
+    height: 46px;
+    width: 46px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -15,15 +15,15 @@
     cursor: pointer;
     transition: 300ms ease-in-out all;
     &:hover {
-      background: #fafafa;
+      background: darken(#DFE3E6, 15%);
     }
     .play-btn {
-      fill: #282c37;
-      height: 25px;
+      fill: #FFFFFF;
+      height: 22px;
     }
   }
   .pause {
-    background: rgba(#d9e1e8, 0.5);
+    background: #DFE3E6;
     height: 45px;
     width: 45px;
     border-radius: 50%;
@@ -34,11 +34,11 @@
     cursor: pointer;
     transition: 300ms ease-in-out all;
     &:hover {
-      background: #fafafa;
+      background: darken(#DFE3E6, 15%);
     }
     .pause-btn {
-      fill: #282c37;
-      height: 25px;
+      fill: #FFFFFF;
+      height: 22px;
     }
   }
 }

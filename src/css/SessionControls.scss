@@ -4,7 +4,7 @@
   justify-content: center;
   margin-bottom: 25px;
   button {
-    background: #2b90d9;
+    background: #6CC3A1;
     color: #fafafa;
     border: none;
     margin: 1px;
@@ -12,8 +12,9 @@
     width: 100%;
     cursor: pointer;
     transition: 300ms linear all;
+    letter-spacing: 0.075em;
     &:hover {
-      background: darken(#2b90d9, 15%);
+      background: darken(#6CC3A1, 15%);
     }
   }
 }
