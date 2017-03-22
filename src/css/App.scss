@@ -1,5 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina|Montserrat:100');
+html, body {
+  height: 100%;
+  box-sizing: border-box;
+}
 body {
-  background: #FAFAFA;
-  color: #333333;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #282c37;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+#main {
+  height: 100%;
+}
+
+.app-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }

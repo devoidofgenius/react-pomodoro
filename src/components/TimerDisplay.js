@@ -14,8 +14,8 @@ class TimerDisplay extends React.Component {
   render() {
     return (
       <div className="timerDisplay">
-        <h3>Create Landing Page</h3>
-        <h1>{this.convertTime(this.props.time)}</h1>
+        <h3 className="task">Create Landing Page</h3>
+        <h1 className="digits">{this.convertTime(this.props.time)}</h1>
       </div>
     );
   }

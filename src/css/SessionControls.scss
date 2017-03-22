@@ -1,3 +1,19 @@
 .sessionControls {
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  button {
+    background: #2b90d9;
+    color: #fafafa;
+    border: none;
+    margin: 1px;
+    padding: 10px 0;
+    width: 100%;
+    cursor: pointer;
+    transition: 300ms linear all;
+    &:hover {
+      background: darken(#2b90d9, 15%);
+    }
+  }
 }

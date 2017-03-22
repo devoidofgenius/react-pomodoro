@@ -85,8 +85,8 @@ class Timer extends React.Component {
     return (
       <div>
         <TimerDisplay time={this.state.time}/>
-        <SessionControls setNewTime={this.setNewTime} />
         <TimerControls startTimer={this.startTimer} pauseTimer={this.pauseTimer} />
+        <SessionControls setNewTime={this.setNewTime} />
       </div>
     );
   }
