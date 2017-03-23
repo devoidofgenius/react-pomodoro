@@ -2,13 +2,14 @@ import React from 'react';
 import TimerDisplay from './TimerDisplay';
 import SessionControls from './SessionControls';
 import TimerControls from './TimerControls';
+import notify from '../audio/notify.mp3';
 
 class Timer extends React.Component {
   constructor() {
     super();
 
     this.state = {
-        time: 1500,
+        time: 5,
         sessionTime: 1500,
         isPlaying: false
     }
@@ -18,6 +19,10 @@ class Timer extends React.Component {
     this.pauseTimer = this.pauseTimer.bind(this);
     this.decrementTime = this.decrementTime.bind(this);
     this.completeSession = this.completeSession.bind(this);
+  }
+
+  componentDidMount() {
+      Notification.requestPermission();
   }
 
 // Sets new time state based on values passed into function
@@ -64,7 +69,7 @@ class Timer extends React.Component {
       })
     }
     // Temporary until Desktop Notification feature and Sound
-    alert("DONE!!!")
+    this.notify();
   }
 
 // Decrements the time state value by one
@@ -78,6 +83,17 @@ class Timer extends React.Component {
     this.setState({
       time: this.state.time - 1
     });
+  }
+
+  notify() {
+    const notification = new Notification('Congratulations!!', {
+      // Temporary icon needs to be replaced.
+      icon: 'http://www.cessan.se/wp-content/uploads/2015/07/goodjob-1024x1024.png',
+      body: 'You completed your session!'
+    })
+    setTimeout(notification.close.bind(notification), 10000);
+    const audio = new Audio(notify);
+    audio.play();
   }
 
 

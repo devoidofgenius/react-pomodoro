@@ -14,7 +14,7 @@ class TimerDisplay extends React.Component {
   render() {
     return (
       <div className="timerDisplay">
-        <h3 className="task">Create Landing Page</h3>
+        <h3 className="task">Pomodoro Timer</h3>
         <h1 className="digits">{this.convertTime(this.props.time)}</h1>
       </div>
     );
