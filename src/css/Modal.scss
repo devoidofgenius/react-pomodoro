@@ -1,0 +1,77 @@
+.modal {
+  opacity: 1;
+  background: #6CC3A1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: fadeIn 300ms;
+  .inner-wrapper {
+    height: 100%;
+    h1 {
+      font-size: 4em;
+      letter-spacing: 0.1em;
+      color: #FFFFFF;
+    }
+  }
+  .custom {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .customControl {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .exit {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    .exit-btn {
+      fill: #FFFFFF;
+      width: 30px;
+      cursor: pointer;
+      padding: 5px;
+    }
+  }
+  .minus-btn,
+  .plus-btn, {
+    fill: #FFFFFF;
+    width: 35px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 25px;
+  }
+  .minus-btn,
+  .plus-btn {
+    flex-grow: 1
+  }
+  button {
+    background: darken(#6CC3A1, 25%);
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 0;
+    width: 175px;
+    cursor: pointer;
+    transition: 300ms linear all;
+    font-size: 1.25em;
+    text-transform: uppercase;
+    letter-spacing: 0.075em;
+    &:hover {
+      background: darken(#6CC3A1, 35%);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

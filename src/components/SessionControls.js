@@ -5,6 +5,7 @@ class SessionControls extends React.Component {
   constructor() {
     super();
     this.clickHandler = this.clickHandler.bind(this);
+    this.toggleHandler = this.toggleHandler.bind(this);
   }
 
 // Handles click and grabs value from target
@@ -13,12 +14,18 @@ class SessionControls extends React.Component {
     this.props.setNewTime(newTime);
   }
 
+// Handles custom time click
+  toggleHandler() {
+    const toggle = true;
+    this.props.toggleModal(toggle);
+  }
+
   render() {
     return (
       <div className="sessionControls">
-        <button onClick={this.clickHandler} value="1500">Code</button>
-        <button onClick={this.clickHandler} value="300">Stretch</button>
-        <button onClick={this.clickHandler} value="900">Walk</button>
+        <button onClick={this.clickHandler} value="1500">25 min</button>
+        <button onClick={this.clickHandler} value="300">5 min</button>
+        <button onClick={this.toggleHandler}>Custom</button>
       </div>
     );
   }

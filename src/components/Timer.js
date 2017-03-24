@@ -2,6 +2,7 @@ import React from 'react';
 import TimerDisplay from './TimerDisplay';
 import SessionControls from './SessionControls';
 import TimerControls from './TimerControls';
+import Modal from './Modal';
 import notify from '../audio/notify.mp3';
 
 class Timer extends React.Component {
@@ -11,14 +12,17 @@ class Timer extends React.Component {
     this.state = {
         time: 5,
         sessionTime: 1500,
-        isPlaying: false
+        isPlaying: false,
+        showModal: false
     }
 
     this.setNewTime = this.setNewTime.bind(this);
+    this.setCustomTime = this.setCustomTime.bind(this);
     this.startTimer = this.startTimer.bind(this);
     this.pauseTimer = this.pauseTimer.bind(this);
     this.decrementTime = this.decrementTime.bind(this);
     this.completeSession = this.completeSession.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +38,23 @@ class Timer extends React.Component {
       sessionTime: newTime,
     });
   }
+
+// Sets custom time via Modal
+  setCustomTime(customTime) {
+    // Need to reset Timer;
+
+    this.setState({
+      time: customTime,
+      sessionTime: customTime,
+    });
+  }
+
+  // Toggles modal visibility
+    toggleModal(toggle) {
+      this.setState({
+        showModal: toggle
+      });
+    }
 
 // Sets isPlaying state value to true and fires decrementTime function inside setInterval on placeholder timer state
   startTimer() {
@@ -102,7 +123,8 @@ class Timer extends React.Component {
       <div>
         <TimerDisplay time={this.state.time}/>
         <TimerControls startTimer={this.startTimer} pauseTimer={this.pauseTimer} />
-        <SessionControls setNewTime={this.setNewTime} />
+        <SessionControls setNewTime={this.setNewTime} toggleModal={this.toggleModal} />
+        {this.state.showModal ? <Modal toggleModal={this.toggleModal} setCustomTime={this.setCustomTime}/> : null}
       </div>
     );
   }
