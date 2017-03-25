@@ -4,13 +4,14 @@ import SessionControls from './SessionControls';
 import TimerControls from './TimerControls';
 import Modal from './Modal';
 import notify from '../audio/notify.mp3';
+import icon from '../css/images/thumbsup.png';
 
 class Timer extends React.Component {
   constructor() {
     super();
 
     this.state = {
-        time: 5,
+        time: 1500,
         sessionTime: 1500,
         isPlaying: false,
         showModal: false
@@ -109,7 +110,7 @@ class Timer extends React.Component {
   notify() {
     const notification = new Notification('Congratulations!!', {
       // Temporary icon needs to be replaced.
-      icon: 'http://www.cessan.se/wp-content/uploads/2015/07/goodjob-1024x1024.png',
+      icon: icon,
       body: 'You completed your session!'
     })
     setTimeout(notification.close.bind(notification), 10000);
