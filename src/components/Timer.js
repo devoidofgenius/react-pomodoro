@@ -18,14 +18,14 @@ class Timer extends React.Component {
     }
 
     this.setNewTime = this.setNewTime.bind(this);
-    this.setCustomTime = this.setCustomTime.bind(this);
     this.startTimer = this.startTimer.bind(this);
     this.pauseTimer = this.pauseTimer.bind(this);
     this.decrementTime = this.decrementTime.bind(this);
     this.completeSession = this.completeSession.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
   }
-
+  
+// Requests permission to use Notifications
   componentDidMount() {
       Notification.requestPermission();
   }
@@ -37,16 +37,6 @@ class Timer extends React.Component {
     this.setState({
       time: newTime,
       sessionTime: newTime,
-    });
-  }
-
-// Sets custom time via Modal
-  setCustomTime(customTime) {
-    // Need to reset Timer;
-
-    this.setState({
-      time: customTime,
-      sessionTime: customTime,
     });
   }
 
@@ -79,7 +69,7 @@ class Timer extends React.Component {
       })
     }
   }
-
+// Runs notify when complete and turns timer off
   completeSession() {
     const isPlaying = this.state.isPlaying;
     if(isPlaying === true) {
@@ -90,7 +80,6 @@ class Timer extends React.Component {
         isPlaying: false
       })
     }
-    // Temporary until Desktop Notification feature and Sound
     this.notify();
   }
 
@@ -125,7 +114,7 @@ class Timer extends React.Component {
         <TimerDisplay time={this.state.time}/>
         <TimerControls startTimer={this.startTimer} pauseTimer={this.pauseTimer} />
         <SessionControls setNewTime={this.setNewTime} toggleModal={this.toggleModal} />
-        {this.state.showModal ? <Modal toggleModal={this.toggleModal} setCustomTime={this.setCustomTime}/> : null}
+        {this.state.showModal ? <Modal currentTime={this.state.sessionTime} setCustomTime={this.setNewTime} toggleModal={this.toggleModal} /> : null}
       </div>
     );
   }

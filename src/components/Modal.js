@@ -1,11 +1,12 @@
 import React from 'react';
+import { convertTime } from '../helpers';
 import '../css/Modal.css';
 
 class Modal extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      customTime: 15
+      customTime: props.currentTime
     }
 
     this.toggleHandler = this.toggleHandler.bind(this);
@@ -17,29 +18,27 @@ class Modal extends React.Component {
     toggleHandler() {
       this.props.toggleModal(false);
     }
-
+  // Reduces the customTime amount
     reduceTime() {
-      if(this.state.customTime <= 1) {
-        console.log("Less than zero");
+      if(this.state.customTime <= 60) {
         return;
       }
       this.setState({
-        customTime: this.state.customTime - 1
+        customTime: this.state.customTime - 60
       });
     }
-
+  // Increments customTime amount
     addTime() {
-      if(this.state.customTime >= 60) {
-        console.log("Greater than 60");
+      if(this.state.customTime >= 3600) {
         return;
       }
       this.setState({
-        customTime: this.state.customTime + 1
+        customTime: this.state.customTime + 60
       });
     }
-
+  // Sets new customTime to state via props function and toggles Modal to false
     submitCustomTime() {
-      const customTime = Number(document.querySelector(".customTime").innerHTML) * 60;
+      const customTime = this.state.customTime;
       this.props.setCustomTime(customTime);
       this.props.toggleModal(false);
     }
@@ -56,7 +55,7 @@ class Modal extends React.Component {
               <div className="minus" onClick={this.reduceTime}>
                 <svg className="minus-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 46"><path d="M32.3 19H13.7c-2.2 0-4 1.8-4 4s1.8 4 4 4h18.6c2.2 0 4-1.8 4-4S34.5 19 32.3 19z"/><path d="M23 0C10.3 0 0 10.3 0 23c0 12.7 10.3 23 23 23s23-10.3 23-23C46 10.3 35.7 0 23 0zM23 40c-9.4 0-17-7.6-17-17 0-9.4 7.6-17 17-17s17 7.6 17 17C40 32.4 32.4 40 23 40z"/></svg>
               </div>
-              <h1 className="customTime">{this.state.customTime}</h1>
+              <h1 className="customTime">{convertTime(this.state.customTime)}</h1>
               <div className="plus" onClick={this.addTime}>
                 <svg className="plus-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45.5 45.5"><path d="M32 18.8h-5.3V13.6c0-2.2-1.8-4-4-4 -2.2 0-4 1.8-4 4v5.2H13.6c-2.2 0-4 1.8-4 4 0 2.2 1.8 4 4 4h5.2v5.2c0 2.2 1.8 4 4 4 2.2 0 4-1.8 4-4v-5.2h5.3c2.2 0 4-1.8 4-4C35.9 20.6 34.2 18.8 32 18.8z"/><path d="M22.8 0C10.2 0 0 10.2 0 22.8 0 35.4 10.2 45.5 22.8 45.5c12.6 0 22.8-10.2 22.8-22.8C45.5 10.2 35.4 0 22.8 0zM22.8 39.6c-9.3 0-16.8-7.5-16.8-16.8 0-9.3 7.6-16.8 16.8-16.8 9.3 0 16.8 7.6 16.8 16.8C39.6 32.1 32.1 39.6 22.8 39.6z"/></svg>
               </div>
