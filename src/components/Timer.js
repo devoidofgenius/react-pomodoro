@@ -24,7 +24,7 @@ class Timer extends React.Component {
     this.completeSession = this.completeSession.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
   }
-  
+
 // Requests permission to use Notifications
   componentDidMount() {
       Notification.requestPermission();
@@ -49,8 +49,7 @@ class Timer extends React.Component {
 
 // Sets isPlaying state value to true and fires decrementTime function inside setInterval on placeholder timer state
   startTimer() {
-    const isPlaying = this.state.isPlaying;
-    if(isPlaying === false) {
+    if(!this.state.isPlaying) {
       this.setState({
         tick: setInterval(this.decrementTime, 1000),
         isPlaying: true
@@ -59,8 +58,7 @@ class Timer extends React.Component {
   }
 // Pause timer by clearInterval and set isPlaying to false
   pauseTimer() {
-    const isPlaying = this.state.isPlaying;
-    if(isPlaying === true) {
+    if(this.state.isPlaying) {
       clearInterval(this.state.tick);
 
       this.setState({
